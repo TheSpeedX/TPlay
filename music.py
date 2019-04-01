@@ -60,7 +60,7 @@ def dislist():
 		l=pr.rfind('/')+1
 		if l==-0:
 			break
-		ap=spr[l:len(pr)-4]
+		ap=pr[l:len(pr)-4]
 		dif=len(ap)-cols+30
 		if dif>0:
 			ap=ap[:len(ap)-dif]
