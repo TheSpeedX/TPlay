@@ -127,6 +127,7 @@ k=randint(0,len(p)-1)
 n=k
 pos=0
 while n < len(p):
+	fg=True
 	lin=""
 	cols=int(os.popen('echo $COLUMNS').read().split('\n')[0])
 	for li in range(0,cols):
@@ -169,6 +170,7 @@ while n < len(p):
 					print 'ARE U MAD !!!\n\t\t You Have Only '+str(len(p))+' Songs'
 				else:
 					n=k
+					fg=False
 					ref=True
 					break
 			except:
@@ -248,7 +250,7 @@ while n < len(p):
 				break
 	if ref and getState():
 		continue
-	if getState()==False:
+	if getState()==False and fg:
 		n=n+1
 		if  n >= len(p):
 			n=0
