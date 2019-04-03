@@ -7,10 +7,17 @@ import subprocess
 
 playing=False
 
+#Scan music from sdcard
+#turn music off after kill process
+#run python script in background
+#add functionality to show previous commands entered
+
 def genlist():
 	print '\nPlease Wait !!\n\tIt may Take A While To Scan Your Phone Memory...'
 	print 'It may take a couple of minutes....'
 	os.system("find -L /sdcard -type f -ipath '*.mp3' >mp3.list")
+	print '\nPhone Scan Completed !!!'
+
 
 def getState():
 	subprocess.call("termux-media-player info >info.xx",shell=True)
@@ -36,6 +43,12 @@ def Exit():
 	os.system("echo -e \"\e[1;31m\"")
 	os.system("toilet -f mono12 -F border     SpeedX   ")
 	os.system("echo -e \"\e[1;32m\"")
+	os.system('echo -e "\\e[1;34m Created By SpeedX\\e[0m"')
+	os.system('echo -e "\\e[4;32m This Player Was Created By SpeedX \\e[0m"')
+	os.system('echo -e "\\e[1;34m For Any Queries Mail Me!!!\\e[0m"')
+	os.system('echo -e "\\e[1;32m           Mail: ggspeedx29@gmail.com \\e[0m"')
+	os.system('echo -e "\\e[1;31m       Whatsapp: https://bit.do/thespeedxgit \\e[0m"')
+	os.system('echo -e "\\e[1;33m   YouTube Page: https://www.youtube.com/c/GyanaTech \\e[0m"')
 	exit()
 def dislist():
 	global p
@@ -71,6 +84,7 @@ def dislist():
 		Exit()
 	print str(len(p))+" songs Loaded !!"
 	print "Press Enter To Start Playing..."
+	raw_input()
 def sortlist():
 	os.system('sort -bfidu mp3.list -o mp3.list')
 	dislist()
@@ -117,15 +131,14 @@ for pr in p:
 		ap=ap[:len(ap)-dif]
         sname.append(ap)
 
-print str(len(p))+" songs Loaded !!"
-print "Press Enter To Start Playing..."
-raw_input()
+print 'Songs Loaded !!!'
 unp=p
 os.system("clear")
 n=0
 k=randint(0,len(p)-1)
 n=k
 pos=0
+empl=500+len(p)*10
 while n < len(p):
 	fg=True
 	lin=""
@@ -133,14 +146,14 @@ while n < len(p):
 	for li in range(0,cols):
 		lin+="-"
 	flag=True
-	empl=500+len(p)*10
 	for cl in range(0,empl):
 		print
 	os.system('clear')
 	os.system("echo -e \"\e[1;31m\"")
 	os.system("toilet -f mono12 -F border     TPlay   ")
+	os.system("echo -e \"\e[1;33m\"")
+	os.system("printf \"%${COLUMNS}s\\n\" \"Created By SpeedX      \"")
 	os.system("echo -e \"\e[1;32m\"")
-	os.system("printf \"%${COLUMNS}s\\n\" \"Created By SpeedX             \"")
 	os.system('echo ')
         for i in range(0,len(p)):
                 if i==n:
@@ -152,12 +165,15 @@ while n < len(p):
 	if not getState() or pos!=n:
 		pos=n
 		os.popen("termux-media-player play \""+p[pos]+"\"")
-	#time.sleep(1)
 	print 'Now Playing: '+p[pos]
 	ref=False
 	while True:
 		inp=''
-		inp=raw_input('TPlay > ').strip()
+		try:
+			inp=raw_input('TPlay > ').strip()
+		except:
+			print 'Some Exception Occurred!!!'
+			Exit()
 		if inp.strip().lower().find('quit')!=-1 or inp.strip().lower().find('exit')!=-1:
 			os.system("rm info.xx")
 			os.system("termux-media-player stop")
@@ -167,7 +183,7 @@ while n < len(p):
 			try:
 				k=int(inp[5:len(inp)])-1
 				if k>=len(p):
-					print 'ARE U MAD !!!\n\t\t You Have Only '+str(len(p))+' Songs'
+					print 'Sorry Can\'t Play That Song !!!\n\t\t You Have Only '+str(len(p))+' Songs'
 				else:
 					n=k
 					fg=False
@@ -230,7 +246,7 @@ while n < len(p):
 		elif inp.lower().find('help') !=-1:
 			print """
 		Available Commands are:---
-			play                - Plays Paused Music
+			play                  - Plays Paused Music
 			play <track_number>   - Plays The Song With That Track Number ( EX- play 3 )
 			pause                 - Pauses Playing Music
 			next                  - Plays Next Song
@@ -240,12 +256,12 @@ while n < len(p):
 			info                  - Gets Info of Currently Playing Song
 			reload                - Rescans The Phone Memory For MP3 files and creates A New List
 			ref                   - Refreshes The Screen
-			remove <track_nukber> - Removes Song With Respective Number From PlayList
+			remove <track_number> - Removes Song With Respective Number From PlayList
 			sort                  - Sort The List According To Path
 
 """
 		else:
-			print 'INVALID COMMAND\nCHECK HELP'
+			print 'INVALID COMMAND\nType help for details...'
 			if not getState():
 				break
 	if ref and getState():
