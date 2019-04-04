@@ -1,3 +1,5 @@
+#!/bin/python
+# coding: utf-8
 import os
 import time
 from random import *
@@ -155,12 +157,12 @@ k=randint(0,len(p)-1)
 n=k
 pos=0
 empl=500+len(p)*10
+#lins='─'
+lins='-'
 while n < len(p):
 	fg=True
-	lin=""
 	cols=int(os.popen('echo $COLUMNS').read().split('\n')[0])
-	for li in range(0,cols):
-		lin+="-"
+	lin=lins*cols
 	flag=True
 	for cl in range(0,empl):
 		print
@@ -204,8 +206,9 @@ while n < len(p):
 		elif inp.strip().lower().find("play") != -1:
 			try:
 				k=int(inp[5:len(inp)])-1
-				if k>=len(p):
+				if k>=len(p) or k<0:
 					print 'Sorry Can\'t Play That Song !!!\n\t\t You Have Only '+str(len(p))+' Songs'
+					print '\tChoose Between 1 To '+str(len(p))+' Songs'
 				else:
 					n=k
 					fg=False
@@ -217,10 +220,12 @@ while n < len(p):
 			os.system('termux-media-player pause')
 		elif inp.lower().find('next') !=-1:
 			n=n+1
+			fg=False
 			ref=True
 			break
 		elif inp.lower().find('prev') !=-1:
 			n=n-1
+			fg=False
 			ref=True
 			break
 		elif inp.lower().find('rand') !=-1:
@@ -296,10 +301,15 @@ while n < len(p):
 			print 'INVALID COMMAND\nType help for details...'
 			if not getState():
 				break
+	if  n >= len(p):
+		n=0
+	elif n<0:
+		n=len(p)-1
 	if ref and getState():
 		continue
 	if getState()==False and fg:
 		n=n+1
 		if  n >= len(p):
 			n=0
-
+		elif n<0:
+			n=len(p)-1
