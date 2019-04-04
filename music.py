@@ -12,13 +12,16 @@ playing=False
 #run python script in background
 #add functionality to show previous commands entered
 
+#Generates MP3 List
 def genlist():
+	if getState():
+		os.system('termux-media-player stop')
 	print '\nPlease Wait !!\n\tIt may Take A While To Scan Your Phone Memory...'
 	print 'It may take a couple of minutes....'
 	os.system("find -L /sdcard -type f -ipath '*.mp3' >mp3.list")
 	print '\nPhone Scan Completed !!!'
-
-
+	raw_input('Press Enter To Continue...')
+#Checks if music is being played
 def getState():
 	subprocess.call("termux-media-player info >info.xx",shell=True)
 	f1=open("info.xx","r")
@@ -28,6 +31,7 @@ def getState():
 		return True
 	else:
 		return False
+#Exits TPlay
 def Exit():
 	global p
 	ln=open('mp3.list').read()
@@ -50,6 +54,7 @@ def Exit():
 	os.system('echo -e "\\e[1;31m       Whatsapp: https://bit.do/thespeedxgit \\e[0m"')
 	os.system('echo -e "\\e[1;33m   YouTube Page: https://www.youtube.com/c/GyanaTech \\e[0m"')
 	exit()
+#Gets Valid Songs Paths And extracts song name
 def dislist():
 	global p
 	global sname
@@ -85,9 +90,21 @@ def dislist():
 	print str(len(p))+" songs Loaded !!"
 	print "Press Enter To Start Playing..."
 	raw_input()
+#Sorts MP3 List path wise
 def sortlist():
+	global p
+	ln=open('mp3.list').read()
+	if len(p)!=ln.count('\n'):
+		print 'Please Wait While We Save Some Changes...'
+		f=open('mp3.list','w')
+		for wr in p:
+			f.write(wr+'\n')
+		f.close()
+		print 'Changes Saved !!!!'
+	print 'Sorting List....'
 	os.system('sort -bfidu mp3.list -o mp3.list')
 	dislist()
+#Removes Song From PlayList
 def remove(n):
 	global p
 	global sname
@@ -132,7 +149,6 @@ for pr in p:
         sname.append(ap)
 
 print 'Songs Loaded !!!'
-unp=p
 os.system("clear")
 n=0
 k=randint(0,len(p)-1)
@@ -173,13 +189,16 @@ while n < len(p):
 			inp=raw_input('TPlay > ').strip()
 		except:
 			print 'Some Exception Occurred!!!'
+			os.popen("rm info.xx")
+			os.popen("termux-media-player stop")
+			print "Exiting Player...\n"
 			Exit()
 		if inp.strip().lower().find('quit')!=-1 or inp.strip().lower().find('exit')!=-1:
-			os.system("rm info.xx")
+			os.popen("rm info.xx")
 			os.system("termux-media-player stop")
 			print "Exiting Player...\n"
 			Exit()
-		elif inp.lower().find("play") != -1:
+		elif inp.strip().lower().find("play") != -1:
 			try:
 				k=int(inp[5:len(inp)])-1
 				if k>=len(p):
@@ -213,13 +232,13 @@ while n < len(p):
 			ref=True
 			break
 		elif inp.lower().find('sort') !=-1:
-			print 'Sorting List....'
+			nsg=p[n]
 			sortlist()
-			raw_input()
-			n=randint(0,len(p)-1)
+			n=p.index(nsg)
+			#n=randint(0,len(p)-1)
 			ref=True
 			break
-		elif inp.lower().find('remove') !=-1:
+		elif inp.lower().strip().find('remove') !=-1:
 			try:
 				r=int(inp[7:len(inp)])-1
 				remove(r)
