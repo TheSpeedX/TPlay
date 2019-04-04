@@ -62,7 +62,6 @@ elif [ $opt -eq 4 ];then
 apt install git -y
 git clone https://github.com/TheSpeedX/TPlay
 echo -e "\e[1;34m Downloading Latest Files..."
-git clone https://github.com/TheSpeedX/TBomb
 if [[ -s TPlay/setup.sh ]];then
 cd TPlay
 cp -r -f * .. > temp
