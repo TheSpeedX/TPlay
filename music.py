@@ -76,8 +76,8 @@ def dislist():
 	cols=int(os.popen('echo $COLUMNS').read().split('\n')[0])
 	for pr in p:
 		l=pr.rfind('/')+1
-		if l==-0:
-			break
+		if l==0:
+			continue
 		ap=pr[l:len(pr)-4]
 		dif=len(ap)-cols+30
 		if dif>0:
@@ -141,7 +141,7 @@ cols=int(os.popen('echo $COLUMNS').read().split('\n')[0])
 for pr in p:
 	l=pr.rfind('/')+1
 	if l==0:
-		break
+		continue
 	ap=pr[l:len(pr)-4]
 	dif=len(ap)-cols+30
 	if dif>0:
@@ -198,6 +198,9 @@ while n < len(p):
 			os.system("termux-media-player stop")
 			print "Exiting Player...\n"
 			Exit()
+		elif inp.strip() == "":
+			if not getState():
+				break
 		elif inp.strip().lower().find("play") != -1:
 			try:
 				k=int(inp[5:len(inp)])-1
@@ -255,6 +258,16 @@ while n < len(p):
 				print 'Please Enter A Number ...'
 				print 'Usage:\nremove <track_nukber> - Removes Song With Respective Number From PlayList'
 		elif inp.lower().find('ref') !=-1:
+			cols=int(os.popen('echo $COLUMNS').read().split('\n')[0])
+			for pr in range(len(p)):
+				l=p[pr].rfind('/')+1
+				if l==0:
+					continue
+				ap=p[pr][l:len(p[pr])-4]
+				dif=len(ap)-cols+30
+				if dif>0:
+					ap=ap[:len(ap)-dif]
+			        sname[pr]=ap
 			ref=True
 			break
 		elif inp.lower().find('info') !=-1:
@@ -264,19 +277,19 @@ while n < len(p):
 			f1.close()
 		elif inp.lower().find('help') !=-1:
 			print """
-		Available Commands are:---
-			play                  - Plays Paused Music
-			play <track_number>   - Plays The Song With That Track Number ( EX- play 3 )
-			pause                 - Pauses Playing Music
-			next                  - Plays Next Song
-			prev                  - Plays Previous Song
-			random                - Plays Random Song
-			quit / exit           - Stops Playing Music And Exits Player
-			info                  - Gets Info of Currently Playing Song
-			reload                - Rescans The Phone Memory For MP3 files and creates A New List
-			ref                   - Refreshes The Screen
-			remove <track_number> - Removes Song With Respective Number From PlayList
-			sort                  - Sort The List According To Path
+	Available Commands are:---
+		play                  - Plays Paused Music
+		play <track_number>   - Plays The Song With That Track Number ( EX- play 3 )
+		pause                 - Pauses Playing Music
+		next                  - Plays Next Song
+		prev                  - Plays Previous Song
+		random                - Plays Random Song
+		quit / exit           - Stops Playing Music And Exits Player
+		info                  - Gets Info of Currently Playing Song
+		reload                - Rescans The Phone Memory For MP3 files and creates A New List
+		ref                   - Refreshes The Screen
+		remove <track_number> - Removes Song With Respective Number From PlayList
+		sort                  - Sort The List According To Path
 
 """
 		else:
