@@ -33,6 +33,7 @@ if [ "$cho" = "Y" ] || [ "$cho" = "y" ] ;then
 apt update && apt upgrade
 apt install figlet git toilet curl python2 -y
 pkg install termux-api
+termux-setup-storage
 if [[ -s $PREFIX/bin/termux-media-player ]] ;then
 echo 'All Dependencies installed...'
 read -p 'Do you want to add TPlay To bin (Y/N): ' ch
@@ -52,11 +53,13 @@ echo 'Please Install Termux:API from PlayStore To Proceed...'
 read -p 'Press Enter Key To Continue..' k
 fi
 elif [ $opt -eq 2 ];then
+termux-setup-storage
 python2 music.py
 exit
 elif [ $opt -eq 3 ];then
 echo 'cd' $PWD '&& python2 music.py' >$PREFIX/bin/tplay
 chmod +x $PREFIX/bin/tplay
+termux-setup-storage
 echo 'Added tplay to bin !!'
 echo -e 'Now You Can Launch TPlay just by typing \e[1;31mtplay\e[1;33m anywhere!!!'
 read -p 'Press Enter Key To Continue..' k
