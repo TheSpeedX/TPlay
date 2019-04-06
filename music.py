@@ -22,6 +22,12 @@ def genlist():
 	print 'It may take a couple of minutes....'
 	os.system("find -L /sdcard -type f -ipath '*.mp3' >mp3.list")
 	print '\nPhone Scan Completed !!!'
+	ch=raw_input('Want To Scan SD Card (Y/N): ')
+	if ch.lower.strip()=="y":
+		print '\nPlease Wait !!\n\tIt may Take A While To Scan Your SDCARD Memory...'
+		print 'It may take a couple of minutes....'
+		os.system("find -L /storage/sdcard1 -type f -ipath '*.mp3' >>mp3.list")
+		print '\nSD Card Scan Completed'
 	raw_input('Press Enter To Continue...')
 #Checks if music is being played
 def getState():
