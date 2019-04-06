@@ -75,6 +75,7 @@ rm -rf  TPlay >> temp
 rm update.speedx >> temp
 rm temp
 chmod +x setup.sh
+./setup.sh
 fi
 echo -e "\e[1;32m The Script Will Now Restart Please Choose Install Depedencies (option 1) To Verify the Working Of TPlay..."
 echo -e "\e[1;34m Press Enter To Proceed To Restart..."
