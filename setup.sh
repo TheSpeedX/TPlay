@@ -39,6 +39,7 @@ echo 'All Dependencies installed...'
 read -p 'Do you want to add TPlay To bin (Y/N): ' ch
 if [ "$ch" = "Y" ] || [ "$ch" = "y" ] ;then
 echo 'cd' $PWD '&& python2 music.py' >$PREFIX/bin/tplay
+echo 'exit' >$PREFIX/bin/tplay
 chmod +x $PREFIX/bin/tplay
 echo 'Added tplay to bin !!'
 echo 'Now You Can Launch TPlay just by typing \e[1;31mtplay\e[1;33m anywhere!!!'
@@ -58,6 +59,7 @@ python2 music.py
 exit
 elif [ $opt -eq 3 ];then
 echo 'cd' $PWD '&& python2 music.py' >$PREFIX/bin/tplay
+echo 'exit' >$PREFIX/bin/tplay
 chmod +x $PREFIX/bin/tplay
 termux-setup-storage
 echo 'Added tplay to bin !!'
