@@ -92,7 +92,7 @@ echo -e "\e[1;34m Created By SpeedX\e[0m"
 echo -e "\e[4;32m This Player Was Created By SpeedX \e[0m"
 echo -e "\e[1;34m For Any Queries Mail Me!!!\e[0m"
 echo -e "\e[1;32m           Mail: ggspeedx29@gmail.com \e[0m"
-echo -e "\e[1;31m       Whatsapp: https://bit.do/thespeedx \e[0m"
+echo -e "\e[1;31m       Whatsapp: https://bit.do/speedxgit \e[0m"
 echo -e "\e[1;33m   YouTube Page: https://www.youtube.com/c/GyanaTech \e[0m"
 echo " "
 exit 0
