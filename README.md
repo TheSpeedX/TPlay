@@ -41,6 +41,7 @@ Now You Can Execute TPlay
 By just typing tplay anywhere ;-)
 
 Available Commands are:---
+<br>
                         play                  - Plays Paused Music<br>
                         play <track_number>   - Plays The Song With That Track Number ( EX- play 3 )<br>
                         pause                 - Pauses Playing Music<br>
