@@ -1,7 +1,7 @@
 # TPlay
 
 <h4>TPlay InterFace</h4>
-![TPlay Screen](https://github.com/TheSpeedX/TPlay/blob/master/screen.jpg)
+<img src="https://i.ibb.co/mXKTCpZ/screen.jpg" alt="screen" border="0">
 
 This is a Termux MP3 Player (CLI) By SpeedX 
 This is Just A Geeky MP3 Player To Give you an Awesome Feeling Of A Hacker....
