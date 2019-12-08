@@ -55,6 +55,12 @@ Available Commands are:---
                         remove <track_number> - Removes Song With Respective Number From PlayList<br>
                         sort                  - Sort The List According To Path<br>
 <br><br>
+
+## TODO
+Remove Termux:API Dependencies and Make Platform Independent
+Feel Free To Add More
+
+
 # NOTE
  NOTE: You Must Install Termux:API From PlayStore Before Proceeding 
 
