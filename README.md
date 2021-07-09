@@ -75,28 +75,9 @@ Feel Free To Add More
 
 
  TPlay Was Created By SpeedX And Retro Ghost
- 
- For Any Queries Join Me On WhatsApp!!!
-    Group Link: http://bit.do/speedxgit
-<a href="http://bit.do/speedxgit">Join My Group</a>
-
-           YouTube Channel: https://www.youtube.com/c/GyanaTech
-  <a href="https://www.youtube.com/c/GyanaTech">Check My Channel</a>
-  
-  To Support Me By Either Helping In Project Or Donating Small Amount To Me For That Contact Me By
-          
-          Mail: ggspeedx29@gmail.com
-          
- That's All !!
 
 
 # CONTACT
 
-For Any Queries Join Me On WhatsApp!!!
-    Group Link: http://bit.do/speedxgit
-<a href="http://bit.do/speedxgit">Join My Group</a>
-
-           Mail: ggspeedx29@gmail.com
-
-           YouTube Channel: https://www.youtube.com/c/GyanaTech
-  <a href="https://www.youtube.com/c/GyanaTech">Check My Channel</a>
+ For Any Queries:  
+        Ping Me : [Telegram](http://t.me/the_space_bar)
